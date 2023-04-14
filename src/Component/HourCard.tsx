@@ -18,13 +18,13 @@ const HourCard = ({ weathers }: { weathers?: any }) => {
           <CardBox>
             <img src={IconUrl} alt="weather" width={80} height={80} />
             <Typography variant="body1">
-              현재기온 : 약 {Math.ceil(Temp.temp - 273.15)} C
+              현재기온 : 약 {Math.ceil(Temp.temp - 273.15)} 도
             </Typography>
             <Typography variant="body1">
-              최고기온 : 약 {Math.ceil(Temp.temp_max - 273.15)} C
+              최고기온 : 약 {Math.ceil(Temp.temp_max - 273.15)} 도
             </Typography>
             <Typography variant="body1">
-              최저기온 : 약 {Math.ceil(Temp.temp_min - 273.15)} C
+              최저기온 : 약 {Math.ceil(Temp.temp_min - 273.15)} 도
             </Typography>
           </CardBox>
         </Grid>
