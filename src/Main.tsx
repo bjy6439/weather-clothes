@@ -59,7 +59,11 @@ const Main = () => {
           })}
           {weatherList.length > 3 ? null : <AddCard addCity={addCity} />}
         </Grid>
-        <ClothesSelect />
+        <Grid maxWidth="xl">
+          {/* <Modal> */}
+          <ClothesSelect />
+          {/* </Modal> */}
+        </Grid>
         {isAddCity && (
           <AddModal>
             <Grid item justifyContent="center" alignItems="center">
@@ -101,6 +105,15 @@ const Main = () => {
 };
 
 export default Main;
+
+const Modal = styled.div`
+  @media screen and (max-width: 600px) {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+`;
 
 const AddModal = styled.div`
   position: absolute;

@@ -5,40 +5,35 @@ import styled from "styled-components";
 const ClothesSelect = () => {
   return (
     <Grid container mt={10}>
-      <Grid item sm={12} md={12} xl={12}>
-        <Grid item md={12} sm={12} xl={12}>
-          <TitleBox>옷 추천</TitleBox>
+      <Grid item md={12} sm={12} xs={12}>
+        <TitleBox>
+          <Typography variant="h5">옷 추천</Typography>
+        </TitleBox>
+      </Grid>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 6 }}>
+        <Grid item sm={6} md={3} xs={12}>
+          <CardBox>
+            <Typography>상의</Typography>
+            <ImgBox src="/images/shirt.png" alt="#" />
+          </CardBox>
         </Grid>
-        <Grid
-          container
-          rowSpacing={1}
-          columnSpacing={{ xs: 0, sm: 2, md: 10 }}
-          justifyContent="center"
-        >
-          <Grid item md={3} sm={6} xs={12}>
-            <CardBox>
-              <Typography>상의</Typography>
-              <img src="#" alt="#" />
-            </CardBox>
-          </Grid>
-          <Grid item md={3} sm={6} xs={12}>
-            <CardBox>
-              <Typography>하의</Typography>
-              <img src="#" alt="#" />
-            </CardBox>
-          </Grid>
-          <Grid item md={3} sm={6} xs={12}>
-            <CardBox>
-              <Typography>아우터</Typography>
-              <img src="#" alt="#" />
-            </CardBox>
-          </Grid>
-          <Grid item md={3} sm={6} xs={12}>
-            <CardBox>
-              <Typography>잡화</Typography>
-              <img src="#" alt="#" />
-            </CardBox>
-          </Grid>
+        <Grid item sm={6} md={3} xs={12}>
+          <CardBox>
+            <Typography>하의</Typography>
+            <ImgBox src="/images/longPants.png" alt="#" />
+          </CardBox>
+        </Grid>
+        <Grid item sm={6} md={3} xs={12}>
+          <CardBox>
+            <Typography>아우터</Typography>
+            <ImgBox src="/Images/coat.png" alt="#" />
+          </CardBox>
+        </Grid>
+        <Grid item sm={6} md={3} xs={12}>
+          <CardBox>
+            <Typography>잡화</Typography>
+            <ImgBox src="/images/coat.png" alt="#" />
+          </CardBox>
         </Grid>
       </Grid>
     </Grid>
@@ -67,4 +62,9 @@ const CardBox = styled.div`
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
+`;
+
+const ImgBox = styled.img`
+  width: 200px;
+  height: 200px;
 `;

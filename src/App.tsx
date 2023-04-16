@@ -26,13 +26,7 @@ const Blue = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.5);
-`;
-
-const BackgroundVideo = styled.video`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  position: relative;
 `;
 
 const View = styled.div`
