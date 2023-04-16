@@ -1,9 +1,8 @@
 import { Grid, Typography } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
-import { TypeFlags } from "typescript";
 
-const AddCard = ({ addCity }: { addCity: any }) => {
+const AddCard = ({ addCity }: { addCity?: any }) => {
   return (
     <Grid item md={3} sm={6} xs={12} onClick={addCity}>
       <TitleBox>

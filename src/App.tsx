@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "./App.css";
-import Main from "./Component/Main";
+import Main from "./Main";
 import Title from "./Component/Title";
 
 function App() {
