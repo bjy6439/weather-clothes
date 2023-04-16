@@ -1,18 +1,25 @@
-import { Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import styled from "styled-components";
 
-const HourCard = ({ weathers }: { weathers?: any }) => {
+const HourCard = ({ weathers, delCity }: { weathers?: any; delCity: any }) => {
   const IconUrl = `http://openweathermap.org/img/wn/${weathers.weather[0]?.icon}.png`;
   const Temp = weathers?.main;
 
   return (
     <>
       {weathers && (
-        <Grid item md={3} sm={6} xs={12}>
+        <Grid>
           <TitleBox>
             <Typography variant="h5" fontWeight="bold">
               {weathers?.name}
             </Typography>
+            <DelBtn
+              onClick={() => {
+                delCity(weathers.name);
+              }}
+            >
+              x
+            </DelBtn>
           </TitleBox>
           <CardBox>
             <img src={IconUrl} alt="weather" width={80} height={80} />
@@ -35,6 +42,7 @@ const HourCard = ({ weathers }: { weathers?: any }) => {
 export default HourCard;
 
 const TitleBox = styled.div`
+  position: relative;
   margin-bottom: 10px;
   padding: 20px;
   background-color: #6485e7;
@@ -55,12 +63,12 @@ const CardBox = styled.div`
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
 `;
 
-const Cs = styled.div`
-  padding: 4px;
-`;
-const TodayWeather = styled.div`
-  padding: 4px;
-`;
-const Clothes = styled.div`
-  padding: 4px;
+const DelBtn = styled.button`
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  font-size: 17px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
 `;

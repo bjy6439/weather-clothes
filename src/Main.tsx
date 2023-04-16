@@ -12,10 +12,6 @@ const Main = () => {
   const [isAddCity, setIsAddCity] = useState<boolean>(false);
   const [selectCity, setSelectCity] = useState<string>("서울");
 
-  // useEffect(() => {
-  //   addWeather();
-  // }, []);
-
   const addWeather = () => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lang}&appid=84dcb4d3f1bc848c2c5f39929eed4e94
@@ -24,6 +20,7 @@ const Main = () => {
       .then((res) => res.json())
       .then((data) => {
         setWeatherList([...weatherList, data]);
+        setSelectCity("서울");
       });
   };
 
@@ -37,6 +34,10 @@ const Main = () => {
     setSelectCity(e.target.outerText);
   };
 
+  const delCity = (value: string) => {
+    setWeatherList((prev) => prev.filter((weather) => weather.name !== value));
+  };
+
   return (
     <>
       <Container maxWidth="xl">
@@ -47,10 +48,17 @@ const Main = () => {
           justifyContent="center"
         >
           {weatherList?.map((weather, idx) => {
-            return <HourCard key={idx} weathers={weather} />;
+            return (
+              <>
+                <Grid item md={3} sm={6} xs={12}>
+                  <HourCard key={idx} weathers={weather} delCity={delCity} />
+                </Grid>
+              </>
+            );
           })}
           {weatherList.length > 3 ? null : <AddCard addCity={addCity} />}
         </Grid>
+        <Grid container></Grid>
         {isAddCity && (
           <AddModal>
             <Grid item justifyContent="center" alignItems="center">
