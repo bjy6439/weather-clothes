@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Grid, Container, Button } from "@mui/material";
+import { Grid, Container, Button, Typography } from "@mui/material";
 import HourCard from "./Component/HourCard";
 import AddCard from "./Component/AddCard";
 import styled from "styled-components";
 import SelectCity from "./Component/SelectCity";
+import ClothesSelect from "./Component/ClothesSelect";
 
 const Main = () => {
   const [lat, setLat] = useState<number>(37.5665);
@@ -58,7 +59,7 @@ const Main = () => {
           })}
           {weatherList.length > 3 ? null : <AddCard addCity={addCity} />}
         </Grid>
-        <Grid container></Grid>
+        <ClothesSelect />
         {isAddCity && (
           <AddModal>
             <Grid item justifyContent="center" alignItems="center">

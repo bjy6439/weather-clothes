@@ -1,4 +1,5 @@
 import { Button, Grid, Typography } from "@mui/material";
+import { useState } from "react";
 import styled from "styled-components";
 
 const HourCard = ({ weathers, delCity }: { weathers?: any; delCity: any }) => {
