@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -9,6 +9,7 @@ const WeeklyWeather = ({ lat, lang }: { lat: number; lang: number }) => {
 
   useEffect(() => {
     dailyWeather();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lat, lang]);
 
   const dailyWeather = () => {
@@ -50,7 +51,9 @@ const WeeklyWeather = ({ lat, lang }: { lat: number; lang: number }) => {
               const maxTemp = Math.ceil(main.temp_max - 273.15);
               const minTemp = Math.ceil(main.temp_min - 273.15);
               const [date, time] = dt_txt.split(" ");
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               const [year, month, day] = date.split("-");
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               const [hour, minute, second] = time.split(":");
 
               return (

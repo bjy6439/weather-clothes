@@ -7,10 +7,6 @@ import axios from "axios";
 import WeeklyWeather from "./Component/WeeklyWeather";
 import styled from "styled-components";
 
-const BoxStyle = {
-  boxshadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-};
-
 const Main = () => {
   const [lat, setLat] = useState<number>(37.5665);
   const [lang, setLang] = useState<number>(126.978);
@@ -20,6 +16,7 @@ const Main = () => {
 
   useEffect(() => {
     addWeather();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addWeather = () => {
