@@ -90,6 +90,7 @@ const Main = () => {
           <WeeklyWeather lat={lat} lang={lang} />
         </Style>
       </Container>
+      <TopButton>Top</TopButton>
     </>
   );
 };
