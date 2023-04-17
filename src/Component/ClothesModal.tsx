@@ -16,19 +16,19 @@ const style = {
 const ClothesModal = ({
   modalOn,
   setModalOn,
-  weathers,
+  modalWeather,
 }: {
   modalOn: boolean;
   setModalOn: React.Dispatch<React.SetStateAction<boolean>>;
-  weathers: any;
+  modalWeather: any;
 }) => {
   const [shirts, setShirts] = useState<string>("");
   const [pants, setPants] = useState<string>("");
   const [outer, setOuter] = useState<string>("");
   const [items, setItems] = useState<string>("");
-  const todayTemp: number = weathers.main.temp - 273.15;
+  const todayTemp: number = modalWeather?.main.temp - 273.15;
 
-  console.log(modalOn);
+  console.log(todayTemp);
 
   useEffect(() => {
     if (todayTemp >= 26) {
@@ -58,7 +58,7 @@ const ClothesModal = ({
       setItems("목도리, 장갑, 모자");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [modalWeather]);
 
   const onClose = () => {
     setModalOn(false);
@@ -75,7 +75,7 @@ const ClothesModal = ({
         <Grid container>
           <Grid item xs>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              {weathers?.name} 옷 추천
+              {modalWeather?.name} 옷 추천
             </Typography>
           </Grid>
           <Grid>

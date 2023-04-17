@@ -4,6 +4,7 @@ import HourCard from "./Component/HourCard";
 import AddCard from "./Component/AddCard";
 import styled from "styled-components";
 import SelectCity from "./Component/SelectCity";
+import ClothesModal from "./Component/ClothesModal";
 
 const Main = () => {
   const [lat, setLat] = useState<number>(37.5665);
@@ -11,6 +12,7 @@ const Main = () => {
   const [weatherList, setWeatherList] = useState<any[]>([]);
   const [isAddCity, setIsAddCity] = useState<boolean>(false);
   const [selectCity, setSelectCity] = useState<string>("서울");
+  const [modalWeather, setModalWeater] = useState<any[]>();
 
   const [modalOn, setModalOn] = useState<boolean>(false);
 
@@ -53,12 +55,18 @@ const Main = () => {
             return (
               <>
                 <Grid key={weather.id} item md={3} sm={6} xs={12}>
-                  <HourCard
-                    weathers={weather}
-                    delCity={delCity}
-                    modalOn={modalOn}
-                    setModalOn={setModalOn}
-                  />
+                  <div
+                    onClick={() => {
+                      setModalWeater(weather);
+                    }}
+                  >
+                    <HourCard
+                      weathers={weather}
+                      delCity={delCity}
+                      modalOn={modalOn}
+                      setModalOn={setModalOn}
+                    />
+                  </div>
                 </Grid>
               </>
             );
@@ -102,6 +110,11 @@ const Main = () => {
             </div>
           </AddModal>
         )}
+        <ClothesModal
+          modalOn={modalOn}
+          setModalOn={setModalOn}
+          modalWeather={modalWeather}
+        />
       </Container>
     </>
   );
@@ -118,7 +131,7 @@ const AddModal = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: white;
   z-index: 1;
 `;

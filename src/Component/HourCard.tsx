@@ -1,7 +1,5 @@
 import { Grid, Typography } from "@mui/material";
-import { useState } from "react";
 import styled from "styled-components";
-import ClothesModal from "./ClothesModal";
 
 const HourCard = ({
   weathers,
@@ -21,7 +19,7 @@ const HourCard = ({
     <>
       {weathers && (
         <div
-          onClick={() => {
+          onClick={(e) => {
             setModalOn(true);
           }}
         >
@@ -31,8 +29,9 @@ const HourCard = ({
                 {weathers?.name}
               </Typography>
               <DelBtn
-                onClick={() => {
+                onClick={(e) => {
                   delCity(weathers.name);
+                  e.stopPropagation();
                 }}
               >
                 x
@@ -51,11 +50,6 @@ const HourCard = ({
               </Typography>
             </CardBox>
           </Grid>
-          <ClothesModal
-            modalOn={modalOn}
-            setModalOn={setModalOn}
-            weathers={weathers}
-          />
         </div>
       )}
     </>
