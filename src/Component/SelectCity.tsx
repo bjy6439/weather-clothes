@@ -32,9 +32,8 @@ const SelectCity = ({
           lang: number;
         }) => {
           return (
-            <CityBtn disabled={selectCity === cityName}>
+            <CityBtn key={id} disabled={selectCity === cityName}>
               <CityLi
-                key={id}
                 onClick={(e) => {
                   addInfo(e, lat, lang);
                 }}
@@ -65,7 +64,6 @@ const CityBtn = styled.button`
 
   &:disabled {
     background-color: #7acae8;
-
     color: #ffffff;
   }
 `;

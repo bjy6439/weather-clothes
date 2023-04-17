@@ -1,40 +1,62 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
+import ClothesModal from "./ClothesModal";
 
-const HourCard = ({ weathers, delCity }: { weathers?: any; delCity: any }) => {
+const HourCard = ({
+  weathers,
+  delCity,
+  modalOn,
+  setModalOn,
+}: {
+  weathers?: any;
+  delCity: any;
+  modalOn: boolean;
+  setModalOn: any;
+}) => {
   const IconUrl = `http://openweathermap.org/img/wn/${weathers.weather[0]?.icon}.png`;
   const Temp = weathers?.main;
 
   return (
     <>
       {weathers && (
-        <Grid>
-          <TitleBox>
-            <Typography variant="h5" fontWeight="bold">
-              {weathers?.name}
-            </Typography>
-            <DelBtn
-              onClick={() => {
-                delCity(weathers.name);
-              }}
-            >
-              x
-            </DelBtn>
-          </TitleBox>
-          <CardBox>
-            <img src={IconUrl} alt="weather" width={80} height={80} />
-            <Typography variant="body1">
-              현재기온 : 약 {Math.ceil(Temp.temp - 273.15)} 도
-            </Typography>
-            <Typography variant="body1">
-              최고기온 : 약 {Math.ceil(Temp.temp_max - 273.15)} 도
-            </Typography>
-            <Typography variant="body1">
-              최저기온 : 약 {Math.ceil(Temp.temp_min - 273.15)} 도
-            </Typography>
-          </CardBox>
-        </Grid>
+        <div
+          onClick={() => {
+            setModalOn(true);
+          }}
+        >
+          <Grid>
+            <TitleBox>
+              <Typography variant="h5" fontWeight="bold">
+                {weathers?.name}
+              </Typography>
+              <DelBtn
+                onClick={() => {
+                  delCity(weathers.name);
+                }}
+              >
+                x
+              </DelBtn>
+            </TitleBox>
+            <CardBox>
+              <img src={IconUrl} alt="weather" width={80} height={80} />
+              <Typography variant="body1">
+                현재기온 : 약 {Math.ceil(Temp.temp - 273.15)} 도
+              </Typography>
+              <Typography variant="body1">
+                최고기온 : 약 {Math.ceil(Temp.temp_max - 273.15)} 도
+              </Typography>
+              <Typography variant="body1">
+                최저기온 : 약 {Math.ceil(Temp.temp_min - 273.15)} 도
+              </Typography>
+            </CardBox>
+          </Grid>
+          <ClothesModal
+            modalOn={modalOn}
+            setModalOn={setModalOn}
+            weathers={weathers}
+          />
+        </div>
       )}
     </>
   );

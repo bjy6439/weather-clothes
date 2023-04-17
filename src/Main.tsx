@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Grid, Container, Button, Typography } from "@mui/material";
+import { Grid, Container, Button } from "@mui/material";
 import HourCard from "./Component/HourCard";
 import AddCard from "./Component/AddCard";
 import styled from "styled-components";
 import SelectCity from "./Component/SelectCity";
-import ClothesSelect from "./Component/ClothesSelect";
 
 const Main = () => {
   const [lat, setLat] = useState<number>(37.5665);
@@ -12,6 +11,8 @@ const Main = () => {
   const [weatherList, setWeatherList] = useState<any[]>([]);
   const [isAddCity, setIsAddCity] = useState<boolean>(false);
   const [selectCity, setSelectCity] = useState<string>("서울");
+
+  const [modalOn, setModalOn] = useState<boolean>(false);
 
   const addWeather = () => {
     fetch(
@@ -48,22 +49,24 @@ const Main = () => {
           columnSpacing={{ xs: 1, sm: 2, md: 10 }}
           justifyContent="center"
         >
-          {weatherList?.map((weather, idx) => {
+          {weatherList?.map((weather) => {
             return (
               <>
-                <Grid item md={3} sm={6} xs={12}>
-                  <HourCard key={idx} weathers={weather} delCity={delCity} />
+                <Grid key={weather.id} item md={3} sm={6} xs={12}>
+                  <HourCard
+                    weathers={weather}
+                    delCity={delCity}
+                    modalOn={modalOn}
+                    setModalOn={setModalOn}
+                  />
                 </Grid>
               </>
             );
           })}
+
           {weatherList.length > 3 ? null : <AddCard addCity={addCity} />}
         </Grid>
-        <Grid maxWidth="xl">
-          {/* <Modal> */}
-          <ClothesSelect />
-          {/* </Modal> */}
-        </Grid>
+        <Grid maxWidth="xl"></Grid>
         {isAddCity && (
           <AddModal>
             <Grid item justifyContent="center" alignItems="center">
@@ -105,15 +108,6 @@ const Main = () => {
 };
 
 export default Main;
-
-const Modal = styled.div`
-  @media screen and (max-width: 600px) {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-  }
-`;
 
 const AddModal = styled.div`
   position: absolute;
