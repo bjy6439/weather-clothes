@@ -23,6 +23,8 @@ function App() {
 export default App;
 
 const Blue = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.5);

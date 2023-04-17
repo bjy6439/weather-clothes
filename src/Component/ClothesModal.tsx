@@ -28,8 +28,6 @@ const ClothesModal = ({
   const [items, setItems] = useState<string>("");
   const todayTemp: number = modalWeather?.main.temp - 273.15;
 
-  console.log(todayTemp);
-
   useEffect(() => {
     if (todayTemp >= 26) {
       setShirts("반팔, 민소매 ,원피스");

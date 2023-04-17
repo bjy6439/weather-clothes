@@ -1,4 +1,5 @@
-import React from "react";
+import { Button, Grid } from "@mui/material";
+import { Container } from "@mui/system";
 import styled from "styled-components";
 
 interface CityList {
@@ -32,15 +33,23 @@ const SelectCity = ({
           lang: number;
         }) => {
           return (
-            <CityBtn key={id} disabled={selectCity === cityName}>
-              <CityLi
-                onClick={(e) => {
-                  addInfo(e, lat, lang);
-                }}
-              >
-                {cityName}
-              </CityLi>
-            </CityBtn>
+            <Container>
+              <Grid container rowSpacing={1} justifyContent="center">
+                <CityLi
+                  key={id}
+                  onClick={(e) => {
+                    addInfo(e, lat, lang);
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    disabled={selectCity === cityName}
+                  >
+                    {cityName}
+                  </Button>
+                </CityLi>
+              </Grid>
+            </Container>
           );
         }
       )}
@@ -51,19 +60,11 @@ const SelectCity = ({
 export default SelectCity;
 
 const CityLi = styled.li`
+  @media screen and (-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
   list-style: none;
   padding: 10px;
   cursor: pointer;
-`;
-
-const CityBtn = styled.button`
-  background-color: #33abd7a7;
-  border: none;
-  margin: 2px;
-  border-radius: 3px;
-
-  &:disabled {
-    background-color: #7acae8;
-    color: #ffffff;
-  }
 `;
