@@ -16,6 +16,7 @@ const style = {
 };
 
 const CityAddModal = ({
+  setIsAddCity,
   isAddCity,
   addWeather,
   addCity,
@@ -27,10 +28,16 @@ const CityAddModal = ({
   addCity: any;
   addInfo: any;
   selectCity: any;
+  setIsAddCity: any;
 }) => {
+  const onClose = () => {
+    setIsAddCity(false);
+  };
+
   return (
     <Modal
       open={isAddCity}
+      onClose={onClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
@@ -89,7 +96,12 @@ const CityUl = styled.ul`
 `;
 
 const CITYONE = [
-  { id: 1, cityName: "서울", lat: 37.5665, lang: 126.978 },
+  {
+    id: 1,
+    cityName: "서울",
+    lat: 37.5665,
+    lang: 126.978,
+  },
   { id: 2, cityName: "인천", lat: 37.4563, lang: 126.7052 },
   { id: 3, cityName: "대구", lat: 35.8714, lang: 128.6014 },
   { id: 4, cityName: "대전", lat: 36.3504, lang: 127.3845 },

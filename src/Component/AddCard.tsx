@@ -6,12 +6,10 @@ const AddCard = ({ addCity }: { addCity?: any }) => {
   return (
     <Grid item md={3} sm={6} xs={12} onClick={addCity}>
       <TitleBox>
-        <Typography variant="h5" fontWeight="bold">
-          추가하기
-        </Typography>
+        <SubTitle>추가하기</SubTitle>
       </TitleBox>
       <AddButton>
-        <Typography variant="h1">+</Typography>
+        <SubTitle>+</SubTitle>
       </AddButton>
     </Grid>
   );
@@ -34,11 +32,15 @@ const AddButton = styled.div`
 
 const TitleBox = styled.div`
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 3px;
   background-color: #6485e7;
   color: white;
   font-weight: 700;
   text-align: center;
   border-radius: 10px;
   cursor: pointer;
+`;
+
+const SubTitle = styled.p`
+  font-size: 25px;
 `;
