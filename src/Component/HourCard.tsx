@@ -8,6 +8,7 @@ const HourCard = ({ weathers, delCity }: { weathers?: any; delCity: any }) => {
   console.log(imgUrl);
   useEffect(() => {
     addImg();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weathers]);
 
   const addImg = () => {
