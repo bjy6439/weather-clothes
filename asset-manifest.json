@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bjy6439/weather-clothes/static/css/main.19102927.css",
+    "main.js": "/bjy6439/weather-clothes/static/js/main.058b9d86.js",
+    "static/js/787.ccc80f87.chunk.js": "/bjy6439/weather-clothes/static/js/787.ccc80f87.chunk.js",
+    "index.html": "/bjy6439/weather-clothes/index.html",
+    "main.19102927.css.map": "/bjy6439/weather-clothes/static/css/main.19102927.css.map",
+    "main.058b9d86.js.map": "/bjy6439/weather-clothes/static/js/main.058b9d86.js.map",
+    "787.ccc80f87.chunk.js.map": "/bjy6439/weather-clothes/static/js/787.ccc80f87.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.19102927.css",
+    "static/js/main.058b9d86.js"
+  ]
+}
