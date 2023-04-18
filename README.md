@@ -1,4 +1,4 @@
-# 프로젝트 이름
+## 프로젝트 이름
 
 WeatherView-bkm
 
@@ -22,8 +22,10 @@ WeatherView-bkm
 
 날씨 api : https://openweathermap.org/api
 
-## 사용한 스택
+## 사용한 스택 및 툴
 
-Frond-End
-<img src="https://img.shields.io/badge/Typescript-F7DF1E?style=flat&amp;logo=javascript&amp;logoColor=white">
+<img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat&amp;logo=javascript&amp;logoColor=white">
+<img src="https://img.shields.io/badge/Typescript-3178C6?style=flat&amp;logo=typescript&amp;logoColor=white">
 <img src="https://img.shields.io/badge/React.js-61DAFB?style=flat&amp;logo=React&amp;logoColor=white">
+<img src="https://img.shields.io/badge/Mui-007FFF?style=flat&amp;logo=mui&amp;logoColor=white">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
