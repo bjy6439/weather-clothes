@@ -101,16 +101,6 @@ const Main = () => {
               );
             })}
             {weatherList.length > 3 ? null : (
-              // <Grid
-              //   container
-              //   sx={{
-              //     display: "flex",
-              //     flexDirection: "column",
-              //   }}
-              // >
-              //   <AddCard addCity={addCity} />
-              //   <AddCard />
-              // </Grid>
               <Grid item xs={12} md={12} sm={12} m={3} textAlign="center">
                 <Button onClick={addCity}>추가하기</Button>
                 <Button

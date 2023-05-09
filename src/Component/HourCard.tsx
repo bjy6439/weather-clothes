@@ -10,8 +10,6 @@ const HourCard = ({ weathers, delCity }: { weathers?: any; delCity: any }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weathers]);
 
-  console.log(imgUrl);
-
   const addImg = () => {
     if (weathers.name === "Seoul") {
       setImgUrl("/images/seoul.jpg");
