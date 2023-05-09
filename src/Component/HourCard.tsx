@@ -45,6 +45,8 @@ const HourCard = ({ weathers, delCity }: { weathers?: any; delCity: any }) => {
       setImgUrl("/images/chung-buk.avif");
     } else if (weathers.name === "Jeju City") {
       setImgUrl("/images/jeju.webp");
+    } else {
+      setImgUrl("/images/sorry.png");
     }
   };
 
