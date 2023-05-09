@@ -8,7 +8,7 @@ const Title = () => {
       <Grid container>
         <Grid item xs={12} md={12} sm={12} mb={2} textAlign="center">
           <NavBar>
-            <SubTitle>Weather Clothes</SubTitle>
+            <SubTitle>Weather Viewer</SubTitle>
           </NavBar>
         </Grid>
       </Grid>

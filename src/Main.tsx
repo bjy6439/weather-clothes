@@ -51,8 +51,6 @@ const Main = () => {
   const [isMap, setIsMap] = useState(false);
   const [addres, setAddres] = useState<string>("");
 
-  console.log(weatherList);
-  console.log(lat, lang);
   useEffect(() => {
     addWeather();
     // eslint-disable-next-line react-hooks/exhaustive-deps

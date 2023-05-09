@@ -66,8 +66,6 @@ const Map = ({
       var center = map.getCenter();
       var Lat = center.getLat();
       const Lng = center.getLng();
-
-      console.log(Lat, Lng);
     }
 
     //중심좌표 재설정
