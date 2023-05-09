@@ -90,6 +90,7 @@ const Main = () => {
 
   const addWeatherFromMap = () => {
     addWeather();
+    setAddres("");
     mapClose();
   };
 
