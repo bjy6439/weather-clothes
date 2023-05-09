@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Container, Box, Typography, Modal, Button } from "@mui/material";
+import {
+  Grid,
+  Container,
+  Box,
+  Typography,
+  Modal,
+  Button,
+  Input,
+  TextField,
+} from "@mui/material";
 import HourCard from "./Component/HourCard";
 import AddCard from "./Component/AddCard";
 import CityAddModal from "./Component/CityAddModal";
@@ -10,11 +19,23 @@ import Map from "./Component/Map";
 
 const style = {
   position: "absolute" as "absolute",
+  display: "flex",
+  flexDirection: "column",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "50vw",
-  height: "50vh",
+  height: "55vh",
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
+const inputStyle = {
+  // transform: "translate(-55%, -55%)",
+  width: "80%",
+  height: "10px",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -28,7 +49,10 @@ const Main = () => {
   const [isAddCity, setIsAddCity] = useState<boolean>(false);
   const [selectCity, setSelectCity] = useState<string>("서울");
   const [isMap, setIsMap] = useState(false);
+  const [addres, setAddres] = useState<string>("");
 
+  console.log(weatherList);
+  console.log(lat, lang);
   useEffect(() => {
     addWeather();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,6 +88,11 @@ const Main = () => {
     setIsMap(false);
   };
 
+  const addWeatherFromMap = () => {
+    addWeather();
+    mapClose();
+  };
+
   return (
     <>
       <Container maxWidth="xl">
@@ -73,9 +102,28 @@ const Main = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box sx={style}>
-            <Map />
-          </Box>
+          <>
+            <Box sx={style}>
+              <Map addres={addres} setLat={setLat} setLang={setLang} />
+              <Grid container justifyContent="center">
+                <TextField
+                  id="standard-basic"
+                  label="주소를 입력하세요."
+                  variant="standard"
+                  value={addres}
+                  onChange={(e) => {
+                    setAddres(e.target.value);
+                  }}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      addWeatherFromMap();
+                    }
+                  }}
+                />
+                <Button onClick={addWeatherFromMap}>날씨 검색</Button>
+              </Grid>
+            </Box>
+          </>
         </Modal>
         <Style>
           <Grid

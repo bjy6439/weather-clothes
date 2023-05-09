@@ -6,7 +6,16 @@ declare global {
   }
 }
 
-const Map = () => {
+const Map = ({
+  addres,
+  setLat,
+  setLang,
+}: {
+  addres: string;
+  setLat: any;
+  setLang: any;
+}) => {
+  console.log(addres);
   const kakao = (window as any).kakao;
 
   useEffect(() => {
@@ -55,50 +64,45 @@ const Map = () => {
     function getInfo() {
       // 지도의 현재 중심좌표를 얻어옵니다
       var center = map.getCenter();
+      var Lat = center.getLat();
+      const Lng = center.getLng();
 
-      // 지도의 현재 레벨을 얻어옵니다
-      var level = map.getLevel();
-
-      // 지도타입을 얻어옵니다
-      var mapTypeId = map.getMapTypeId();
-
-      // 지도의 현재 영역을 얻어옵니다
-      var bounds = map.getBounds();
-
-      // 영역의 남서쪽 좌표를 얻어옵니다
-      var swLatLng = bounds.getSouthWest();
-
-      // 영역의 북동쪽 좌표를 얻어옵니다
-      var neLatLng = bounds.getNorthEast();
-
-      // 영역정보를 문자열로 얻어옵니다. ((남,서), (북,동)) 형식입니다
-      var boundsStr = bounds.toString();
-
-      var message = "지도 중심좌표는 위도 " + center.getLat() + ", <br>";
-      message += "경도 " + center.getLng() + " 이고 <br>";
-      message += "지도 레벨은 " + level + " 입니다 <br> <br>";
-      message += "지도 타입은 " + mapTypeId + " 이고 <br> ";
-      message +=
-        "지도의 남서쪽 좌표는 " +
-        swLatLng.getLat() +
-        ", " +
-        swLatLng.getLng() +
-        " 이고 <br>";
-      message +=
-        "북동쪽 좌표는 " +
-        neLatLng.getLat() +
-        ", " +
-        neLatLng.getLng() +
-        " 입니다";
-
-      // 개발자도구를 통해 직접 message 내용을 확인해 보세요.
-      console.log(message);
+      console.log(Lat, Lng);
     }
 
     //중심좌표 재설정
     var position = new window.kakao.maps.LatLng(37.586272, 127.029005);
     map.setCenter(position);
-  }, []);
+
+    getInfo();
+
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    geocoder.addressSearch(`${addres}`, function (result: any, status: any) {
+      // 정상적으로 검색이 완료됐으면
+      if (status === kakao.maps.services.Status.OK) {
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        setLat(coords.Ma);
+        setLang(coords.La);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+          map: map,
+          position: coords,
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+          content: `<div style="width:150px;text-align:center;padding:6px 0;">${addres}</div>`,
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+      }
+    });
+  }, [addres]);
 
   return <div id="map" style={{ width: "50vw", height: "50vh" }} />;
 };
