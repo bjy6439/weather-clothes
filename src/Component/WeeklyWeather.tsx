@@ -34,20 +34,17 @@ const WeeklyWeather = ({ lat, lang }: { lat: number; lang: number }) => {
       <Style>
         <Grid container justifyContent="center" alignItems="center">
           {dayWeather?.map(
-            (
-              {
-                dt_txt,
-                dt,
-                main,
-                weather,
-              }: {
-                dt_txt: string;
-                dt: number;
-                main: any;
-                weather: any;
-              },
-              idx
-            ) => {
+            ({
+              dt_txt,
+              dt,
+              main,
+              weather,
+            }: {
+              dt_txt: string;
+              dt: number;
+              main: any;
+              weather: any;
+            }) => {
               const maxTemp = Math.ceil(main.temp_max - 273.15);
               const minTemp = Math.ceil(main.temp_min - 273.15);
               const [date, time] = dt_txt.split(" ");
@@ -55,10 +52,16 @@ const WeeklyWeather = ({ lat, lang }: { lat: number; lang: number }) => {
               const [year, month, day] = date.split("-");
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               const [hour, minute, second] = time.split(":");
-
               return (
                 <>
-                  <Grid key={idx} item xs={3} sm={3} md={3} textAlign="center">
+                  <Grid
+                    key={dt_txt}
+                    item
+                    xs={3}
+                    sm={3}
+                    md={3}
+                    textAlign="center"
+                  >
                     <TimeList>{`${month}/${day} ${hour}시`}</TimeList>
                   </Grid>
                   <Grid item xs={3} sm={3} md={3} textAlign="center">

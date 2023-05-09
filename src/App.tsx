@@ -1,9 +1,7 @@
-import React from "react";
 import styled from "styled-components";
 import "./App.css";
 import Main from "./Main";
 import Title from "./Component/Title";
-import { Box } from "@mui/material";
 
 function App() {
   return (

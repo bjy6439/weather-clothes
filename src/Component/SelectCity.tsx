@@ -33,10 +33,9 @@ const SelectCity = ({
           lang: number;
         }) => {
           return (
-            <Container>
+            <Container key={id}>
               <Grid container rowSpacing={1} justifyContent="center">
                 <CityLi
-                  key={id}
                   onClick={(e) => {
                     addInfo(e, lat, lang);
                   }}

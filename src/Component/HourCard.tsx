@@ -5,11 +5,12 @@ import styled from "styled-components";
 const HourCard = ({ weathers, delCity }: { weathers?: any; delCity: any }) => {
   const [imgUrl, setImgUrl] = useState<string>("");
 
-  console.log(imgUrl);
   useEffect(() => {
     addImg();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weathers]);
+
+  console.log(imgUrl);
 
   const addImg = () => {
     if (weathers.name === "Seoul") {
